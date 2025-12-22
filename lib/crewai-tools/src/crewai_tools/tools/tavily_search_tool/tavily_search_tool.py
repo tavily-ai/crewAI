@@ -67,8 +67,9 @@ class TavilySearchTool(BaseTool):
         default=None,
         description="Optional proxies to use for the Tavily API requests.",
     )
-    search_depth: Literal["basic", "advanced"] = Field(
-        default="basic", description="The depth of the search."
+    search_depth: Literal["basic", "advanced", "fast", "ultra-fast"] = Field(
+        default="basic",
+        description="The depth of the search. Options: 'basic', 'advanced', 'fast' (BETA: optimized for low latency with high relevance), 'ultra-fast' (BETA: prioritizes latency above all else).",
     )
     topic: Literal["general", "news", "finance"] = Field(
         default="general", description="The topic to focus the search on."

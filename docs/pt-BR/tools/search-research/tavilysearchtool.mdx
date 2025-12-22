@@ -72,7 +72,7 @@ print(result)
 The `TavilySearchTool` accepts the following arguments during initialization or when calling the `run` method:
 
 - `query` (str): **Required**. The search query string.
-- `search_depth` (Literal["basic", "advanced"], optional): The depth of the search. Defaults to `"basic"`.
+- `search_depth` (Literal["basic", "advanced", "fast", "ultra-fast"], optional): The depth of the search. Options: `"basic"`, `"advanced"`, `"fast"` (BETA: optimized for low latency with high relevance, 1 API Credit), `"ultra-fast"` (BETA: prioritizes latency above all else, 1 API Credit). Defaults to `"basic"`.
 - `topic` (Literal["general", "news", "finance"], optional): The topic to focus the search on. Defaults to `"general"`.
 - `time_range` (Literal["day", "week", "month", "year"], optional): The time range for the search. Defaults to `None`.
 - `days` (int, optional): The number of days to search back. Relevant if `time_range` is not set. Defaults to `7`.
@@ -107,7 +107,7 @@ agent_with_custom_tool = Agent(
 ## Features
 
 - **Comprehensive Search**: Access to Tavily's powerful search index
-- **Configurable Depth**: Choose between basic and advanced search modes
+- **Configurable Depth**: Choose between basic, advanced, fast (BETA), and ultra-fast (BETA) search modes
 - **Topic Filtering**: Focus searches on general, news, or finance topics
 - **Time Range Control**: Limit results to specific time periods
 - **Domain Control**: Include or exclude specific domains
