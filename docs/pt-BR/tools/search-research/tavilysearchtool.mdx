@@ -82,6 +82,7 @@ The `TavilySearchTool` accepts the following arguments during initialization or 
 - `include_answer` (Union[bool, Literal["basic", "advanced"]], optional): Whether to include a direct answer synthesized from the search results. Defaults to `False`.
 - `include_raw_content` (bool, optional): Whether to include the raw HTML content of the searched pages. Defaults to `False`.
 - `include_images` (bool, optional): Whether to include image results. Defaults to `False`.
+- `exact_match` (bool, optional): Whether to only return results containing the exact phrase(s) inside quotes. Defaults to `None` (not sent).
 - `timeout` (int, optional): The request timeout in seconds. Defaults to `60`.
 
 ## Advanced Usage
@@ -102,6 +103,19 @@ agent_with_custom_tool = Agent(
     goal="Conduct detailed research with comprehensive results",
     tools=[custom_tavily_tool]
 )
+```
+
+### Exact Match Search
+
+Use `exact_match` to only return results containing the exact phrase(s) inside quotes:
+
+```python
+# Search for exact phrases
+exact_search_tool = TavilySearchTool(exact_match=True)
+
+# Use with quoted phrases in the query
+# e.g., query='"John Smith" CEO Acme Corp' will only return results
+# containing the exact phrase "John Smith"
 ```
 
 ## Features

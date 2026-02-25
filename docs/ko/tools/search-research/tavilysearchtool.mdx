@@ -82,6 +82,7 @@ print(result)
 - `include_answer` (Union[bool, Literal["basic", "advanced"]], 선택): 검색 결과로부터 직접적으로 생성된 답변을 포함할지 여부입니다. 기본값은 `False`입니다.
 - `include_raw_content` (bool, 선택): 검색된 페이지의 원시 HTML 콘텐츠를 포함할지 여부입니다. 기본값은 `False`입니다.
 - `include_images` (bool, 선택): 이미지 결과를 포함할지 여부입니다. 기본값은 `False`입니다.
+- `exact_match` (bool, 선택): 따옴표 안의 정확한 구문을 포함하는 결과만 반환할지 여부입니다. 기본값은 `None`(전송되지 않음)입니다.
 - `timeout` (int, 선택): 요청의 타임아웃(초)입니다. 기본값은 `60`입니다.
 
 ## 고급 사용법
@@ -102,6 +103,19 @@ agent_with_custom_tool = Agent(
     goal="Conduct detailed research with comprehensive results",
     tools=[custom_tavily_tool]
 )
+```
+
+### 정확한 일치 검색
+
+`exact_match`를 사용하여 따옴표 안의 정확한 구문을 포함하는 결과만 반환합니다:
+
+```python
+# Search for exact phrases
+exact_search_tool = TavilySearchTool(exact_match=True)
+
+# Use with quoted phrases in the query
+# e.g., query='"John Smith" CEO Acme Corp' will only return results
+# containing the exact phrase "John Smith"
 ```
 
 ## 기능
